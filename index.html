@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matriz de Curadoria de Sneakers</title>
+    <!-- Configurações para PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2563eb">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-zinc-950 text-zinc-100 font-sans p-4 sm:p-6">
+    <div class="max-w-3xl mx-auto bg-zinc-900 p-6 sm:p-8 rounded-2xl shadow-2xl border border-zinc-800">
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-center text-white mb-6 tracking-tight">Matriz de Curadoria de Sneakers</h1>
+        
+        <form id="sneakerForm" class="space-y-6">
+            <!-- Informações da Aquisição -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-zinc-950/50 p-4 rounded-xl border border-zinc-800/80">
+                <div>
+                    <label class="block text-xs font-semibold text-zinc-400 mb-1 uppercase tracking-wider">Nome do tênis:</label>
+                    <input type="text" id="nome" required class="w-full p-2.5 rounded-lg bg-zinc-900 border border-zinc-700 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="Ex: Nike SB Dunk Low">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-zinc-400 mb-1 uppercase tracking-wider">Marca:</label>
+                    <input type="text" id="marca" required class="w-full p-2.5 rounded-lg bg-zinc-900 border border-zinc-700 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="Ex: Nike">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-zinc-400 mb-1 uppercase tracking-wider">Colorway:</label>
+                    <input type="text" id="colorway" required class="w-full p-2.5 rounded-lg bg-zinc-900 border border-zinc-700 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="Ex: Som Tum">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-zinc-400 mb-1 uppercase tracking-wider">Site / Loja:</label>
+                    <input type="text" id="site" required class="w-full p-2.5 rounded-lg bg-zinc-900 border border-zinc-700 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="Ex: Nike.com.br">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-zinc-400 mb-1 uppercase tracking-wider">Valor Original (R$):</label>
+                    <input type="number" step="0.01" id="valorOriginal" required class="w-full p-2.5 rounded-lg bg-zinc-900 border border-zinc-700 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="Ex: 799.99">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-zinc-400 mb-1 uppercase tracking-wider">Valor Atual (R$):</label>
+                    <input type="number" step="0.01" id="valorAtual" class="w-full p-2.5 rounded-lg bg-zinc-900 border border-zinc-700 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="Ex: 499.99">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-zinc-400 mb-1 uppercase tracking-wider">Data de Lançamento:</label>
+                    <input type="date" id="dataLancamento" required class="w-full p-2.5 rounded-lg bg-zinc-900 border border-zinc-700 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-zinc-400 mb-1 uppercase tracking-wider">Data Atual:</label>
+                    <input type="date" id="dataAtual" required class="w-full p-2.5 rounded-lg bg-zinc-900 border border-zinc-700 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                </div>
+                <div class="sm:col-span-2">
+                    <label class="block text-xs font-semibold text-zinc-400 mb-1 uppercase tracking-wider">Categoria:</label>
+                    <select id="categoria" required class="w-full p-2.5 rounded-lg bg-zinc-900 border border-zinc-700 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        <option value="" disabled selected>Selecione a categoria</option>
+                        <option value="GR">GR</option>
+                        <option value="SE">SE</option>
+                        <option value="SB">SB</option>
+                        <option value="OG">OG</option>
+                        <option value="RETRO">RETRO</option>
+                        <option value="QS">QS</option>
+                        <option value="PRM">PRM</option>
+                        <option value="PREMIUM">PREMIUM</option>
+                        <option value="SP">SP</option>
+                        <option value="SPECIAL PROJECT">SPECIAL PROJECT</option>
+                        <option value="NRG">NRG</option>
+                        <option value="ENERGY">ENERGY</option>
+                        <option value="ORIGINALS">ORIGINALS</option>
+                        <option value="ADV">ADV</option>
+                        <option value="ADVANCED">ADVANCED</option>
+                        <option value="Y2K">Y2K</option>
+                        <option value="SPZL">SPZL</option>
+                        <option value="SPEZIAL">SPEZIAL</option>
+                        <option value="CONSORTIUM">CONSORTIUM</option>
+                        <option value="Y-3">Y-3</option>
+                        <option value="MADE in USA">MADE in USA</option>
+                        <option value="MADE in UK">MADE in UK</option>
+                        <option value="NB#">NB#</option>
+                        <option value="REENGINEERED">REENGINEERED</option>
+                        <option value="DECONSTRUCTED">DECONSTRUCTED</option>
+                        <option value="Performance">Performance</option>
+                        <option value="Sportswear">Sportswear</option>
+                        <option value="Casual">Casual</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Pilar 1 (Peso 2x) -->
+            <div class="bg-zinc-950 p-4 rounded-xl border border-zinc-800">
+                <div class="flex justify-between items-center mb-3">
+                    <h3 class="font-bold text-sm text-white">PILAR 1 - Proteção Financeira</h3>
+                    <span class="text-xs bg-blue-950 text-blue-300 px-2 py-0.5 rounded font-semibold border border-blue-800">Peso 2x</span>
+                </div>
+                <p class="text-xs text-zinc-400 mb-3">O preço que estou pagando no momento da compra protege o meu dinheiro em uma venda futura?</p>
+                <div class="space-y-2">
+                    <label class="flex items-start gap-2.5 p-2.5 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-zinc-700 cursor-pointer">
+                        <input type="radio" name="pilar1" value="1" required class="mt-1 text-blue-600 focus:ring-blue-500">
+                        <span class="text-xs text-zinc-300"><strong class="text-white">CHEIO:</strong> (Quando o valor do tênis está cheio)</span>
+                    </label>
+                    <label class="flex items-start gap-2.5 p-2.5 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-zinc-700 cursor-pointer">
+                        <input type="radio" name="pilar1" value="2" class="mt-1 text-blue-600 focus:ring-blue-500">
+                        <span class="text-xs text-zinc-300"><strong class="text-white">Até 15%:</strong> (Quando o valor do tênis está com até 15 % em relação ao valor original)</span>
+                    </label>
+                    <label class="flex items-start gap-2.5 p-2.5 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-zinc-700 cursor-pointer">
+                        <input type="radio" name="pilar1" value="3" class="mt-1 text-blue-600 focus:ring-blue-500">
+                        <span class="text-xs text-zinc-300"><strong class="text-white">Até 30%:</strong> (Quando o valor do tênis está entre 16% e 30% em relação ao preço original)</span>
+                    </label>
+                    <label class="flex items-start gap-2.5 p-2.5 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-zinc-700 cursor-pointer">
+                        <input type="radio" name="pilar1" value="4" class="mt-1 text-blue-600 focus:ring-blue-500">
+                        <span class="text-xs text-zinc-300"><strong class="text-white">Até 49%:</strong> (Quando o valor do tênis está entre 31% e 49% em relação ao preço original)</span>
+                    </label>
+                    <label class="flex items-start gap-2.5 p-2.5 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-zinc-700 cursor-pointer">
+                        <input type="radio" name="pilar1" value="5" class="mt-1 text-blue-600 focus:ring-blue-500">
+                        <span class="text-xs text-zinc-300"><strong class="text-white">Acima de 50%:</strong> (Quando o valor está igual ou superior a 50% de desconto em relação ao preço original)</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Pilar 2 (Peso 1,5x) -->
+            <div class="bg-zinc-950 p-4 rounded-xl border border-zinc-800">
+                <div class="flex justify-between items-center mb-3">
+                    <h3 class="font-bold text-sm text-white">PILAR 2 - Construção</h3>
+                    <span class="text-xs bg-blue-950 text-blue-300 px-2 py-0.5 rounded font-semibold border border-blue-800">Peso 1,5x</span>
+                </div>
+                <p class="text-xs text-zinc-400 mb-3">Este tênis pertence a uma linha com padrão de construção elevado?</p>
+                <div class="space-y-2">
+                    <label class="flex items-start gap-2.5 p-2.5 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-zinc-700 cursor-pointer">
+                        <input type="radio" name="pilar2" value="1" required class="mt-1 text-blue-600 focus:ring-blue-500">
+                        <span class="text-xs text-zinc-300"><strong class="text-white">GR:</strong> (Materiais padrão. Couros e tecidos sintéticos ou genuínos, porém de baixa qualidade)</span>
+                    </label>
+                    <label class="flex items-start gap-2.5 p-2.5 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-zinc-700 cursor-pointer">
+                        <input type="radio" name="pilar2" value="2" class="mt-1 text-blue-600 focus:ring-blue-500">
+                        <span class="text-xs text-zinc-300"><strong class="text-white">GR bem construído ou SE:</strong> (Ótimos materiais ou tênis de performance bem construído, mas únicas atribuições)</span>
+                    </label>
+                    <label class="flex items-start gap-2.5 p-2.5 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-zinc-700 cursor-pointer">
+                        <input type="radio" name="pilar2" value="3" class="mt-1 text-blue-600 focus:ring-blue-500">
+                        <span class="text-xs text-zinc-300"><strong class="text-white">SB ou SE elevado:</strong> (Bons materiais para SB ou SE com materiais com padrões mais elevados)</span>
+                    </label>
+                    <label class="flex items-start gap-2.5 p-2.5 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-zinc-700 cursor-pointer">
+                        <input type="radio" name="pilar2" value="4" class="mt-1 text-blue-600 focus:ring-blue-500">
+                        <span class="text-xs text-zinc-300"><strong class="text-white">SB ISO ou OG Padrão:</strong> (SB ISO com materiais superiores ao SB padrão ou OG com material padrão)</span>
+                    </label>
+                    <label class="flex items-start gap-2.5 p-2.5 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-zinc-700 cursor-pointer">
+                        <input type="radio" name="pilar2" value="5" class="mt-1 text-blue-600 focus:ring-blue-500">
+                        <span class="text-xs text-zinc-300"><strong class="text-white">SB ou OG Premium ou Luxo:</strong> (Tênis das linhas SB ou OG, mas com materiais premium ou luxo, superior a todos os outros)</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Pilar 3 (Peso 2x) -->
+            <div class="bg-zinc-950 p-4 rounded-xl border border-zinc-800">
+                <div class="flex justify-between items-center mb-3">
+                    <h3 class="font-bold text-sm text-white">PILAR 3 - Narrativa e História</h3>
+                    <span class="text-xs bg-blue-950 text-blue-300 px-2 py-0.5 rounded font-semibold border border-blue-800">Peso 2x</span>
+                </div>
+                <p class="text-xs text-zinc-400 mb-3">Este tênis tem uma história genuína, um conceito visual rico ou easter eggs que justificam sua existência?</p>
+                <div class="space-y-2">
+                    <label class="flex items-start gap-2.5 p-2.5 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-zinc-700 cursor-pointer">
+                        <input type="radio" name="pilar3" value="1" required class="mt-1 text-blue-600 focus:ring-blue-500">
+                        <span class="text-xs text-zinc-300"><strong class="text-white">GR Simples:</strong> (GR sem atributo. Com apenas uma boa seleção de cores)</span>
+                    </label>
+                    <label class="flex items-start gap-2.5 p-2.5 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-zinc-700 cursor-pointer">
+                        <input type="radio" name="pilar3" value="2" class="mt-1 text-blue-600 focus:ring-blue-500">
+                        <span class="text-xs text-zinc-300"><strong class="text-white">SB ou SE Bem aceito:</strong> (SB bem construído, mas de modelo padrão ou SE com boa aceitação da comunidade.)</span>
+                    </label>
+                    <label class="flex items-start gap-2.5 p-2.5 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-zinc-700 cursor-pointer">
+                        <input type="radio" name="pilar3" value="3" class="mt-1 text-blue-600 focus:ring-blue-500">
+                        <span class="text-xs text-zinc-300"><strong class="text-white">SB ISO ou Dunk c/ Narrativa:</strong> (SB ou Dunk com boa narrativa ou história relevante)</span>
+                    </label>
+                    <label class="flex items-start gap-2.5 p-2.5 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-zinc-700 cursor-pointer">
+                        <input type="radio" name="pilar3" value="4" class="mt-1 text-blue-600 focus:ring-blue-500">
+                        <span class="text-xs text-zinc-300"><strong class="text-white">OG Padrão ou SB + Colab Simples:</strong> (Jordan OG no modelo padrão ou SB com colaboração simples)</span>
+                    </label>
+                    <label class="flex items-start gap-2.5 p-2.5 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-zinc-700 cursor-pointer">
+                        <input type="radio" name="pilar3" value="5" class="mt-1 text-blue-600 focus:ring-blue-500">
+                        <span class="text-xs text-zinc-300"><strong class="text-white">SB e OG + Colab Pesada:</strong> (Colaboração de peso ou grandes homenagens para ambos os modelos e com distribuição restrita)</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Pilar 4 (Peso 1x) -->
+            <div class="bg-zinc-950 p-4 rounded-xl border border-zinc-800">
+                <div class="flex justify-between items-center mb-3">
+                    <h3 class="font-bold text-sm text-white">PILAR 4 - Uso e Rotação</h3>
+                    <span class="text-xs bg-blue-950 text-blue-300 px-2 py-0.5 rounded font-semibold border border-blue-800">Peso 1x</span>
+                </div>
+                <p class="text-xs text-zinc-400 mb-3">Qual lacuna visual ou de uso este par preenche na minha rotação?</p>
+                <div class="space-y-2">
+                    <label class="flex items-start gap-2.5 p-2.5 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-zinc-700 cursor-pointer">
+                        <input type="radio" name="pilar4" value="1" required class="mt-1 text-blue-600 focus:ring-blue-500">
+                        <span class="text-xs text-zinc-300"><strong class="text-white">Dia a dia:</strong> (Escolhido por ser bonito e bem construído)</span>
+                    </label>
+                    <label class="flex items-start gap-2.5 p-2.5 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-zinc-700 cursor-pointer">
+                        <input type="radio" name="pilar4" value="2" class="mt-1 text-blue-600 focus:ring-blue-500">
+                        <span class="text-xs text-zinc-300"><strong class="text-white">Uso específico:</strong> (Possui uma narrativa, mas sem grandes atenções. Uso em festas ou baladas)</span>
+                    </label>
+                    <label class="flex items-start gap-2.5 p-2.5 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-zinc-700 cursor-pointer">
+                        <input type="radio" name="pilar4" value="3" class="mt-1 text-blue-600 focus:ring-blue-500">
+                        <span class="text-xs text-zinc-300"><strong class="text-white">Uso raro:</strong> (Tem boa narrativa, colab simples ou tema relevante. É para ser guardado na coleção e usar apenas em ocasiões especiais)</span>
+                    </label>
+                    <label class="flex items-start gap-2.5 p-2.5 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-zinc-700 cursor-pointer">
+                        <input type="radio" name="pilar4" value="4" class="mt-1 text-blue-600 focus:ring-blue-500">
+                        <span class="text-xs text-zinc-300"><strong class="text-white">Talvez nunca use:</strong> (Tênis difícil de ser encontrado, mas acessível financeiramente. A princípio, não usar)</span>
+                    </label>
+                    <label class="flex items-start gap-2.5 p-2.5 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-zinc-700 cursor-pointer">
+                        <input type="radio" name="pilar4" value="5" class="mt-1 text-blue-600 focus:ring-blue-500">
+                        <span class="text-xs text-zinc-300"><strong class="text-white">Item de manta:</strong> (Museu. Deve ser mantido "na embalagem original" ou em “caixa de acrílico”)</span>
+                    </label>
+                </div>
+            </div>
+
+            <button type="submit" class="w-full py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl shadow-lg transition-all text-sm tracking-wide">Calcular Decisão de Compra</button>
+        </form>
+
+        <!-- Resultados -->
+        <div id="resultado" class="mt-8 p-6 rounded-2xl hidden border">
+            <div class="text-center mb-6">
+                <div id="resNota" class="text-3xl font-black mb-2"></div>
+                <div id="resBadge" class="inline-block px-3 py-1 rounded-md text-xs font-bold uppercase tracking-wider"></div>
+            </div>
+            <div id="resMsg" class="text-base font-semibold text-center mb-6 leading-relaxed"></div>
+            <div id="resAdicional" class="space-y-2 text-sm bg-black/30 p-4 rounded-xl border border-white/10 mb-6"></div>
+            
+            <div class="border-t border-white/10 pt-4">
+                <h4 class="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-2">Opções escolhidas:</h4>
+                <div id="resOpcoes" class="space-y-1.5 text-xs text-zinc-300"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dicionário de Descrições das Categorias
+        const descricoesCategorias = {
+            "OG": "OG (Original): Modelos que mantêm exatamente as mesmas cores, materiais e formatos do lançamento original de décadas atrás",
+            "SB": "SB (Skateboarding): Divisão focada em skate, com tênis que possuem amortecimento extra (Zoom Air) e materiais mais resistentes.",
+            "SE": "SE (Special Edition): Edições especiais que mudam materiais ou cores de um modelo clássico, geralmente com tiragem limitada",
+            "QS": "QS (Quickstrike): Lançamentos surpresa e altamente limitados, distribuídos apenas em lojas selecionadas (boutiques)",
+            "PRM": "PRM (Premium): Versões feitas com materiais de qualidade superior, como couros nobres e acabamento refinado.",
+            "PREMIUM": "PRM (Premium): Versões feitas com materiais de qualidade superior, como couros nobres e acabamento refinado.",
+            "SP": "SP (Special Project): Modelos que representam o topo de linha em termos de inovação ou colaborações com designers de alta moda.",
+            "SPECIAL PROJECT": "SP (Special Project): Modelos que representam o topo de linha em termos de inovação ou colaborações com designers de alta moda.",
+            "RETRO": "RETRO: Relançamentos de modelos antigos que não necessariamente seguem à risca o padrão exato do par original (diferente do OG).",
+            "ADV": "ADV (Advanced): Categoria de alta performance voltada para o skate (Adidas Skateboarding) ou reconstruções modernas de modelos de corrida antigos.",
+            "ADVANCED": "ADV (Advanced): Categoria de alta performance voltada para o skate (Adidas Skateboarding) ou reconstruções modernas de modelos de corrida antigos.",
+            "ORIGINALS": "OG (Originals): Linha casual/lifestyle da marca (que leva o logo do trevo), focada em reedições fiéis de clássicos como Superstar e Samba.",
+            "SPZL": "SPZL (Spezial): Linha premium baseada no arquivo histórico da marca, com forte apelo à cultura de arquibancada europeia (casual culture).",
+            "SPEZIAL": "SPZL (Spezial): Linha premium baseada no arquivo histórico da marca, com forte apelo à cultura de arquibancada europeia (casual culture).",
+            "CONSORTIUM": "Consortium: O selo mais exclusivo da Adidas, usado apenas para colaborações de altíssimo nível com as melhores lojas do mundo.",
+            "Y-3": "Y-3: Linha de vanguarda e alta moda em parceria duradoura com o renomado designer japonês Yohji Yamamoto.",
+            "MADE in USA": "MADE in USA / MADE in UK: Categoria premium da marca, indicando tênis fabricados manualmente nos EUA ou Reino Unido com materiais de altíssima qualidade (como suede pigskin).",
+            "MADE in UK": "MADE in USA / MADE in UK: Categoria premium da marca, indicando tênis fabricados manualmente nos EUA ou Reino Unido com materiais de altíssima qualidade (como suede pigskin).",
+            "NB#": "NB Numeric (NB#): Divisão oficial de tênis voltados exclusivamente para a prática do skate.",
+            "REENGINEERED": "Reengineered: Modelos clássicos reformulados com tecnologias modernas, construções sem costura e materiais mais leves.",
+            "DECONSTRUCTED": "Deconstructed: Versões minimalistas de silhuetas famosas, onde o forro interno e enchimentos são removidos para um visual mais clean e leve.",
+            "Performance": "Performance: Versões voltadas apenas para a prática do esporte e desempenho.",
+            "Sportswear": "Sportswear: Tênis voltado para o estilo esportivo e sem grande performance.",
+            "Casual": "Casual: Tênis voltado para o estilo casual, para saídas ou eventos."
+        };
+
+        // Preencher data atual automaticamente ao carregar
+        document.getElementById('dataAtual').valueAsDate = new Date();
+
+        document.getElementById('sneakerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Capturar dados de aquisição
+            const nome = document.getElementById('nome').value;
+            const marca = document.getElementById('marca').value;
+            const colorway = document.getElementById('colorway').value;
+            const site = document.getElementById('site').value;
+            const valorOriginal = parseFloat(document.getElementById('valorOriginal').value) || 0;
+            const valorAtualInput = document.getElementById('valorAtual').value;
+            const valorAtual = valorAtualInput !== "" ? parseFloat(valorAtualInput) : null;
+            const dataLancamentoStr = document.getElementById('dataLancamento').value;
+            const dataAtualStr = document.getElementById('dataAtual').value;
+            const categoriaSelect = document.getElementById('categoria').value;
+
+            const p1 = parseInt(document.querySelector('input[name="pilar1"]:checked').value);
+            const p2 = parseInt(document.querySelector('input[name="pilar2"]:checked').value);
+            const p3 = parseInt(document.querySelector('input[name="pilar3"]:checked').value);
+            const p4 = parseInt(document.querySelector('input[name="pilar4"]:checked').value);
+
+            // Capturar textos explicativos das opções selecionadas (apenas o que está entre parênteses)
+            const getDescricao = (name) => {
+                const checked = document.querySelector(`input[name="${name}"]:checked`);
+                if (!checked) return '';
+                const text = checked.parentElement.querySelector('span').textContent;
+                const match = text.match(/\(([^)]+)\)/);
+                return match ? match[1] : text;
+            };
+
+            const opt1 = getDescricao('pilar1');
+            const opt2 = getDescricao('pilar2');
+            const opt3 = getDescricao('pilar3');
+            const opt4 = getDescricao('pilar4');
+
+            // Cálculo ponderado (P1: 2x, P2: 1.5x, P3: 2x, P4: 1x)
+            const somaPonderada = (p1 * 2) + (p2 * 1.5) + (p3 * 2) + (p4 * 1);
+
+            const resDiv = document.getElementById('resultado');
+            const resNota = document.getElementById('resNota');
+            const resBadge = document.getElementById('resBadge');
+            const resMsg = document.getElementById('resMsg');
+            const resAdicional = document.getElementById('resAdicional');
+            const resOpcoes = document.getElementById('resOpcoes');
+
+            resDiv.classList.remove('hidden');
+
+            let mensagem = '';
+            let badgeText = '';
+            let boxClass = '';
+            let badgeClass = '';
+
+            if (somaPonderada >= 6.5 && somaPonderada <= 11.7) {
+                mensagem = "NÃO compre! Remova do carrinho agora mesmo! Não é uma compra inteligente.";
+                badgeText = "C";
+                boxClass = "bg-red-950/40 border-red-900 text-red-200";
+                badgeClass = "bg-red-600 text-white";
+            } else if (somaPonderada >= 11.8 && somaPonderada <= 17.0) {
+                mensagem = "Atenção! Não é a pior compra, mas poderia ser melhor. Pense bem";
+                badgeText = "C+";
+                boxClass = "bg-amber-950/40 border-amber-900 text-amber-200";
+                badgeClass = "bg-amber-600 text-white";
+            } else if (somaPonderada >= 17.1 && somaPonderada <= 22.3) {
+                mensagem = "Compra regular! Nem boa e nem ruim.";
+                badgeText = "B";
+                boxClass = "bg-zinc-800/60 border-zinc-700 text-zinc-200";
+                badgeClass = "bg-zinc-600 text-white";
+            } else if (somaPonderada >= 22.4 && somaPonderada <= 27.6) {
+                mensagem = "Sinal Verde! Esta é uma boa compra!";
+                badgeText = "A";
+                boxClass = "bg-emerald-950/40 border-emerald-900 text-emerald-200";
+                badgeClass = "bg-emerald-600 text-white";
+            } else if (somaPonderada >= 27.7 && somaPonderada <= 32.5) {
+                mensagem = "Ótima compra! Feche agora mesmo!";
+                badgeText = "A+";
+                boxClass = "bg-purple-950/40 border-purple-900 text-purple-200";
+                badgeClass = "bg-purple-600 text-white";
+            }
+
+            resNota.textContent = `Nota Ponderada: ${somaPonderada.toFixed(1)} / 32,5`;
+            resBadge.textContent = badgeText;
+            resBadge.className = `inline-block px-3 py-1 rounded-md text-xs font-bold uppercase tracking-wider ${badgeClass}`;
+            resMsg.textContent = mensagem;
+            resDiv.className = `mt-8 p-6 rounded-2xl border transition-all ${boxClass}`;
+
+            // Regras Adicionais de Preço
+            let adicionaisHtml = '';
+            if (valorAtual === null || valorAtual === valorOriginal) {
+                adicionaisHtml += `<p>• ATENÇÃO! Tênis sendo vendido no valor de Retail. Só compre se a resposta acima for "Sinal verde" ou "Ótima compra"</p>`;
+            } else if (valorAtual > valorOriginal) {
+                adicionaisHtml += `<p>• CUIDADO EXTREMO! Tênis sendo vendido no valor de Resale, acima do valor de lançamento. Só compre se for Ótima compra.</p>`;
+            } else if (valorAtual < valorOriginal) {
+                adicionaisHtml += `<p>• Tênis com desconto. Aproveite!</p>`;
+            }
+
+            // Regras de Datas
+            if (dataLancamentoStr && dataAtualStr) {
+                const dLanc = new Date(dataLancamentoStr);
+                const dAtu = new Date(dataAtualStr);
+
+                if (dLanc > dAtu) {
+                    adicionaisHtml += `<p>• Tênis com data de lançamento marcada para ${dataLancamentoStr}</p>`;
+                } else {
+                    const diffMonths = (dAtu.getFullYear() - dLanc.getFullYear()) * 12 + (dAtu.getMonth() - dLanc.getMonth());
+                    if (diffMonths >= 12) {
+                        adicionaisHtml += `<p>• Tênis de coleção antiga</p>`;
+                    } else {
+                        adicionaisHtml += `<p>• Tênis de coleção ainda deste ano</p>`;
+                    }
+                }
+            }
+
+            resAdicional.innerHTML = adicionaisHtml;
+
+            // Descrição da Categoria
+            const textoCategoria = descricoesCategorias[categoriaSelect] || categoriaSelect;
+
+            // Informações da Aquisição + Opções escolhidas formatadas
+            resOpcoes.innerHTML = `
+                <p><strong class="text-white">Nome do tênis:</strong> ${nome}</p>
+                <p><strong class="text-white">Marca:</strong> ${marca}</p>
+                <p><strong class="text-white">Colorway:</strong> ${colorway}</p>
+                <p><strong class="text-white">Valor Original:</strong> R$ ${valorOriginal.toFixed(2)}</p>
+                <p><strong class="text-white">Valor Atual:</strong> ${valorAtual !== null ? 'R$ ' + valorAtual.toFixed(2) : 'Não informado'}</p>
+                <p><strong class="text-white">Site / Loja:</strong> ${site}</p>
+                <p><strong class="text-white">Data de lançamento:</strong> ${dataLancamentoStr}</p>
+                <p><strong class="text-white">Data atual:</strong> ${dataAtualStr}</p>
+                <p><strong class="text-white">Categoria:</strong> ${textoCategoria}</p>
+                <hr class="border-white/10 my-2">
+                <p>• ${opt1}</p>
+                <p>• ${opt2}</p>
+                <p>• ${opt3}</p>
+                <p>• ${opt4}</p>
+            `;
+
+            resDiv.scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
